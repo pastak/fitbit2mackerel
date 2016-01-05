@@ -21,7 +21,7 @@ client.refreshAccessToken(token, {forceRefresh: true}).then((newToken) => {
     const today = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
     const metrics = dataset.map((item) => {return {
       name: 'heartbeat',
-      time: Date.parse(`${today} ${item.time}`),
+      time: Date.parse(`${today} ${item.time}`)/1000,
       value: item.value
     }})
     request.post({
