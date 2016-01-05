@@ -1,0 +1,23 @@
+{
+  "name": "fitbit2mackerel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pastak/fitbit2mackerel.git"
+  },
+  "author": "pastak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pastak/fitbit2mackerel/issues"
+  },
+  "homepage": "https://github.com/pastak/fitbit2mackerel#readme",
+  "dependencies": {
+    "fitbit-client-oauth2": "github:pastak/fitbit-client-oauth2",
+    "request": "^2.67.0"
+  }
+}
