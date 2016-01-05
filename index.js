@@ -7,13 +7,15 @@ const clientSecret = config.CONSUMER_SECRET
 const client = new FitbitClient(clientId, clientSecret)
 const token = client.createToken({
     access_token: config.ACCESS_TOKEN,
-    refresh_token: config.REFRESH_TOKEN
+    refresh_token: config.REFRESH_TOKEN,
+    expires_at: config.EXPIRES_AT
 })
-client.refreshAccessToken(token, {forceRefresh: true}).then((newToken) => {
+client.refreshAccessToken(token).then((newToken) => {
   client.getTimeSeries(newToken, {resourcePath: 'activities/heart', period: '1d/1sec'}).then((res) => {
     const _config = `module.exports = ${JSON.stringify(Object.assign(config, {
       ACCESS_TOKEN: newToken.token.access_token,
-      REFRESH_TOKEN: newToken.token.refresh_token
+      REFRESH_TOKEN: newToken.token.refresh_token,
+      EXPIRES_AT: newToken.token.expires_at
     }))}`
     require('fs').writeFile('./config.js', _config)
     const dataset = res['activities-heart-intraday'].dataset
